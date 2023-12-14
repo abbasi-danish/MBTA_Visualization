@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Metadata -->
+<head>
+  <meta charset="utf-8">
+  <!-- <base href="/cosi-116a-final-project-code-wwxiao09/"> -->
+  <!-- Title -->
+  <title>Project Team #10: Topic Ridership of MBTA, COSI 116A F23</title>
+  
+  <!-- CSS Styling -->
+  <link rel="stylesheet" href="style.css">
+ 
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+  <link rel="manifest" href="favicons/site.webmanifest">
+  <link rel="shortcut icon" href="favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="favicons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<!-- Main page content -->
+<body>
+
+  <!-- Update this with your GitHub repo URL -->
+  <span id="forkongithub"><a href="https://github.com/COSI116A-Brandeis-InfoVis-Fall23/cosi-116a-final-project-code-wwxiao09">Fork me on GitHub</a></span>
+
+  <!-- Your writeup goes here -->
+  <div class = "content-column">
+  
+    <h1>Project Team #10: Interactive Visualization for Ridership of MBTA Subwaylines - COSI 116A F23</h1>
+    
+    <p><strong>Danish Abbasi</strong>, <strong>Liulu Yue</strong>, <strong>Rongzi Xie</strong>, <strong>Wenxiao Wang</strong></p>
+    
+    <p>Project-long Course Project as part of COSI 116A: Information Visualization</a>, taught by <a href="https://cs.brandeis.edu/~dylan/">Prof. Dylan Cashman</a>, <a href="https://cs.brandeis.edu/">Brandeis University</a>.</p>
+    
+    
+    <h1>Motivation</h1>
+    
+    <p>Our project focuses on analyzing and visualizing 
+      ridership distribution for MBTA rails. Our motivation for tackling the problems addressed 
+      through our visualization is so that users can navigate the MBTA subway system more easily.
+      This visualization showcases ridership distribution across time periods, directions, 
+      rails, and stations. Using various encoding channels like area, color, 
+      and position, we've developed an interactive linked visualization. 
+     </p>
+    
+    <p>Its aim is to assist users in understanding passenger flow when using 
+      any transportation line at different time periods. The link node chart enables 
+      users to explore passenger flow details for each station, while the line and bar
+       charts offer different perspectives—one highlighting time sensitivity and the other providing an overview of passenger flow across rail lines.</p>
+
+    
+    <h1>Visualization</h1>
+    
+    
+  </div>
+  
+  <!-- Your visualization here -->
+
+  <div class="vis-holder">
+    <div id="table-container"></div>
+    <!-- Change viewbox to whatever you want, e.g. "0 0 1000 6000" This determines your aspect ratio and coordinate system -->    
+    <!-- Delete all the sample SVG code below after the viewbox to before the closing tag. Populate this part of the SVG with D3. -->
+    <!-- <svg id="vis-svg"
+      preserveAspectRatio="xMidYMid meet" class="marks" viewBox="0 0 821 520">
+    </svg>  -->
+    <!-- Include the script for line chart -->
+    <svg height="200" id="chart"></svg>
+    <!-- <svg id="nodeLinkMap" width="600" height="400"></svg> -->
+    <!-- <div class="nodelinkmap-holder" id="nodelinkmap"></div>
+    <div class="linechart-holder" id="linechart"></div>
+    <div class="barchart-holder" id="barchart"></div> -->
+  </div>
+  
+  <!-- Your writeup goes here -->
+  <div class = "content-column">
+
+    <h1>Demo Video</h1>
+    
+    <p><em>Embedded MP4 demo video using the HTML5 &lt;video&gt; tag. For example, this screen recording Prof. Cody Dunne made of Mike Bostock's flexible transitions in D3 slide:</em></p>
+    
+    <video controls width="100%">
+      <source src="data/116_video.mp4" type="video/mp4">
+      <p>Your browser doesn't support HTML5 video. Here is
+       a <a href="http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4">link to the video</a> instead.</p>
+    </video>
+
+    <h1>Visualization explanation</h1>
+    
+    <p><em>See above in the demo video section for demonstration on our visualization.</em></p>
+
+    <h1>Data Analysis</h1>
+    <p><em>The dataset used in this project is the MBTA Rail Ridership which can be found on the MBTA official website. This dataset provides a detailed overlook for ridership data cross all the MBTA lines. The dataset provides information for each specific stop on each line with information on the time of day each passenger boarded/disembarked the train as well as with the mean of total offs/total ons of passengers. Additionally, the data types for our dataset are: nominal, interval, and ordinal.
+      </em></p>
+      <p>The steps for the data preprocessing were:</p>
+      <p> 1. Convert dataset into JSON file and put into the data folder </em> <p>
+        <p> 2. Load it into Javascript file using fetch </p>
+        <p> 3. For Barchart: Same steps, but for the specific data found it was calculated using line chart data and put into an array initially used to fill barchart data </p>
+
+  
+
+    <p><em>Expectation: Data sources match the problem statement and are appropriate. These descriptions should be very explicit so someone could read your page and properly reproduce your results.</em></p>
+
+    <h1>Task Analysis</h1>
+    <p>Our domain tasks for this project are as follows: </p>
+    <p> 1. What is the estimated passenger flow distribution for each subway line at this time period of the day? (analytic task: summarize, search task: explore, analyze task: discover) </p>
+    <p> 2. Utilizing a time table, how does the passenger flow distribution change throughout the different time periods of the day?  (analytic task: summarize, search task: explore, analyze task: enjoy) </p>
+    <p> <b> Goals for first domain task: </b></p>
+    <p> <ol>
+      <li>Show the passenger flow at various times for all the lines on the MBTA. </li>
+      <li> Clearly show the user the general distribution of passenger numbers for each station. </li>
+      <li> Quickly find general information on each MBTA rail to see which ones are busy at what specific times </li>
+      <li> Show users trends on passenger flows for each MBTA rail from the visualization </li>
+    </ol></p>
+
+    <p> <b> Goals for second domain task: </b></p>
+    <p>
+      <ol>
+        <li> Shows user overall trend of passenger flow using time table </li>
+        <li> User can explore various trends amongst each MBTA line using the time table </li>
+        <li> Utilization of time table provides a more enjoyable experience of user at navigating the visualization </li>
+      </ol>
+    </p>
+
+
+
+    <h1>Design Process</h1>
+
+    <p> <b> Early Sketches: </b></p>
+
+    <img src="images/EarlySketch1.png" alt="EarlySketch1" />
+
+    <p>In the bar-graph sketch above, we chose to use lines for the marks and each bar(line) represents a subway line. The channels used are vertical lengths, horizontal positions, and colors. 
+      We chose to use vertical lengths so that the user could easily distinguish the passenger volume for each line and see which line has the least or greatest volume. 
+      Additionally, we chose horizontal positions to represent the different subway lines and colors to relate to the name of the subway lines. 
+    </p>
+
+    <img src="images/EarlySketch2.png" alt="EarlySketch2" />
+
+    <p>In the line graph sketch above, we chose lines and points for the marks. 
+      We chose lines to represent each subway line and each point on the line to represent the different times in the day. 
+      Our design choice for this was so that the user can easily select the time period without having to specifically click on the time. 
+      The channels used are position and color, our justification for using these is the same for using it in our bar-graph sketch. </p>
+
+      <p> <b> Final Sketch: </b></p>
+      <img src="images/FinalSketch.png" alt="FinalSketch" />
+    <p>From our previous beginning sketches, our design choices remained consistent with what we described previously within our final sketch drawings (shown above). 
+      We kept the same channel and marks for both the line and bar graph and our justifications for both remain the same. 
+    </p>
+
+
+
+    <h1>Conclusion</h1>
+
+    <p>Through our visualization we were able to successfully visualize each MBTA line’s passenger flow at different times in the day (excluding the commuter rail lines). 
+      Additionally, we were able to successfully visualize it using a time-table linked with a line-chart and bar-graph 
+      so that the user could see specific trends amongst each line.  Due to time constraints, we were not able to implement every station on each line 
+      as well as the commuter railway lines, however, for future work/improvements, our project could 
+      definitely implement all the commuter rail lines and as well all the stations on each line. 
+    </p>
+    
+
+    
+    <h1>Acknowledgments</h1>
+
+    <p><em>List here where any code, packages/libraries, text, images, designs, etc. that you leverage come from.</em></p>
+    
+    <ul>
+      <li><a href="https://d3js.org/">D3: Data-Driven Documents</a> by Mike Bostock.</li>
+      <li><a href="https://codepo8.github.io/css-fork-on-github-ribbon/#">Pure CSS responsive "Fork me on GitHub" ribbon</a> by Chris Heilmann.</li>
+    </ul>
+    
+  </div>
+  
+  <!-- Scripts at the end avoid need for dealing with async, defer, or onload event handlers -->
+  <script src="lib/d3.v4/d3.v4.js"></script>
+  <script src="js/visualization.js"></script>
+  <script src="js/twocharts.js"></script>
+  <!-- <script src="js/linechart.js"></script> -->
+  <!-- <script src="js/nodelinkmap.js"></script> -->
+  <!-- <script src="js/barchart.js"></script> -->
+</body>
+</html>
